@@ -10,6 +10,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 // -----------------------------
+// List of countries you have visited
+// -----------------------------
+const visitedCountries = [
+  "Botswana",
+  "South Africa",
+  "Namibia"
+  // add more countries as needed
+];
+
+
+// -----------------------------
 // Add dummy towns (markers)
 // -----------------------------
 const towns = [
@@ -32,12 +43,13 @@ fetch('data/world_countries.geo.json')  // Make sure this path matches your file
   .then(geojson => {
     L.geoJSON(geojson, {
       style: function(feature) {
+        const isVisited = visitedCountries.includes(feature.properties.name);
         return {
-          color: 'blue',         // Country borders
-          fillColor: 'lightblue', // Country fill color
-          fillOpacity: 0.4,       // Transparency of fill
+          color: 'blue',                      // Country borders
+          fillColor: isVisited ? 'lightblue' : 'transparent', // Fill only visited countries
+          fillOpacity: isVisited ? 0.4 : 0,
           weight: 1,
-          fill: true              // Force Leaflet to fill the polygon
+          fill: true
         };
       }
     }).addTo(map);
