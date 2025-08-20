@@ -43,21 +43,17 @@ fetch('data/world_countries.geo.json')  // Make sure this path matches your file
   .then(res => res.json())
   .then(geojson => {
     L.geoJSON(geojson, {
-      style: function(feature) {
-           // Convert GeoJSON country name to lowercase and trim spaces
+  style: function(feature) {
     const countryName = feature.properties.name.toLowerCase().trim();
-
-    // Check if this country is in your visitedCountries array (case-insensitive)
     const isVisited = visitedCountries.some(c => c.toLowerCase().trim() === countryName);
 
     return {
-          color: 'transparent',                      // Country borders
-          fillColor: isVisited ? 'lightblue' : 'transparent', // Fill only visited countries
-          fillOpacity: isVisited ? 0.4 : 0,
-          weight: 0,
-          fill: true
-        };
-      }
-    }).addTo(map);
+      fillColor: isVisited ? 'lightblue' : 'transparent', // Fill only visited countries
+      fillOpacity: isVisited ? 0.4 : 0,
+      stroke: false,      // Completely remove borders
+      interactive: false  // Optional: disables hover effects
+    };
+  }
+}).addTo(map);
   })
   .catch(err => console.error("Error loading GeoJSON:", err));
