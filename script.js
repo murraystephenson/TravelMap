@@ -19,10 +19,10 @@ towns.forEach(town => {
 });
 
 // ----- Countries -----
-fetch('data/countries.geojson')
+fetch('data/countries.json')
   .then(res => res.json())
-  .then(geojson => {
-    L.geoJSON(geojson, {
+  .then(json => {
+    L.JSON(json, {
       style: {
         color: 'blue',
         fillColor: 'lightblue',
