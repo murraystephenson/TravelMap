@@ -54,7 +54,7 @@ fetch('data/world_countries.geo.json')  // Make sure this path matches your file
           color: 'transparent',                      // Country borders
           fillColor: isVisited ? 'lightblue' : 'transparent', // Fill only visited countries
           fillOpacity: isVisited ? 0.4 : 0,
-          weight: 1,
+          weight: 0,
           fill: true
         };
       }
