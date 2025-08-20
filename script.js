@@ -15,7 +15,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const visitedCountries = [
   "Botswana",
   "South Africa",
-  "Namibia"
   // add more countries as needed
 ];
 
