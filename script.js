@@ -36,6 +36,34 @@ const locations = [
     lat: -24.628,
     lng: 25.923,
     years: ['2023', '2024', '2025']
+  },
+  {
+    city: 'Boston',
+    country: 'United States',
+    lat: 42.3601,
+    lng: -71.0589,
+    years: ['2017']
+  },
+  {
+    city: 'London',
+    country: 'United Kingdom',
+    lat: 51.5074,
+    lng: -0.1278,
+    years: ['2017']
+  },
+  {
+    city: 'Brussels',
+    country: 'Belgium',
+    lat: 50.8503,
+    lng: 4.3517,
+    years: ['2017']
+  },
+  {
+    city: 'Copenhagen',
+    country: 'Denmark',
+    lat: 55.6761,
+    lng: 12.5683,
+    years: ['2017']
   }
 ];
 
