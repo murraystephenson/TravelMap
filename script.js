@@ -18,6 +18,7 @@ const visitedCountries = [
   "Botswana",
   "South Africa",
   "Namibia"
+  "Zambia"
   // add more countries as needed
 ];
 
