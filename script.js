@@ -13,8 +13,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // List of countries you have visited
 // -----------------------------
 const visitedCountries = [
-  "Botswana",
-  "South Africa",
+  { "Botswana", year: 1998 },
+  { "South Africa", year: 1987 },
   // add more countries as needed
 ];
 
