@@ -13,9 +13,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // List of countries visited with year
 // -----------------------------
 const visitedCountries = [
-  { name: "Botswana", year: 2023 },
-  { name: "South Africa", year: 2022 },
-  { name: "Namibia", year: 2021 }
+  { name: "Botswana", year: 1998 },
+  { name: "South Africa", year: 1987 },
+  { name: "Namibia", year: 2025 }
 ];
 
 
@@ -25,6 +25,7 @@ const visitedCountries = [
 const towns = [
   { name: "Maun, Botswana", coords: [-19.983, 23.431], date: "2023-06-15", year: 2023 },
   { name: "Cape Town, South Africa", coords: [-33.918, 18.423], date: "2022-12-05", year: 2022 }
+  { name: "Hermanus, South Africa", coords: [-34.406, 19.270], date: "2020-12-05", year: 2020 }
 ];
 
 
@@ -82,7 +83,7 @@ fetch('data/world_countries.geo.json')
         });
 
         return {
-          color: 'blue',                          // borders
+          color: 'transparent',                          // borders
           fillColor: isVisited ? 'lightblue' : 'transparent',
           fillOpacity: isVisited ? 0.4 : 0,
           weight: 1,
