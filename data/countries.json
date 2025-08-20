@@ -1,0 +1,7 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "name": "Botswana", "year": "2023" }, "geometry": { "type": "Polygon", "coordinates": [[[25, -18], [26, -18], [26, -19], [25, -19], [25, -18]]] } },
+    { "type": "Feature", "properties": { "name": "South Africa", "year": "2022" }, "geometry": { "type": "Polygon", "coordinates": [[[18, -33], [19, -33], [19, -34], [18, -34], [18, -33]]] } }
+  ]
+}
