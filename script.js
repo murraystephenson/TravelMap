@@ -64,6 +64,20 @@ const locations = [
     lat: 55.6761,
     lng: 12.5683,
     years: ['2017']
+  },
+  {
+    city: 'Sydney',
+    country: 'Australia',
+    lat: 33.872,
+    lng: 151.205,
+    years: ['2015']
+  },
+  {
+    city: 'Brisbane',
+    country: 'Australia',
+    lat: 27.470,
+    lng: 153.026,
+    years: ['2015']
   }
 ];
 
