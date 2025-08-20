@@ -1,0 +1,7 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "name": "Maun, Botswana", "date": "2023-06-15" }, "geometry": { "type": "Point", "coordinates": [23.431, -19.983] } },
+    { "type": "Feature", "properties": { "name": "Cape Town, South Africa", "date": "2022-12-05" }, "geometry": { "type": "Point", "coordinates": [18.423, -33.918] } }
+  ]
+}
