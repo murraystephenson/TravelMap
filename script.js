@@ -39,7 +39,7 @@ const locations = [
   },
   {
     city: 'Boston',
-    country: 'United States',
+    country: 'United States of America',
     lat: 42.3601,
     lng: -71.0589,
     years: ['2017']
@@ -68,14 +68,14 @@ const locations = [
   {
     city: 'Sydney',
     country: 'Australia',
-    lat: 33.872,
+    lat: -33.872,
     lng: 151.205,
     years: ['2015']
   },
   {
     city: 'Brisbane',
     country: 'Australia',
-    lat: 27.470,
+    lat: -27.470,
     lng: 153.026,
     years: ['2015']
   }
