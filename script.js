@@ -22,8 +22,12 @@ const towns = [
 
 // Local data for countries visited (derived from towns)
 const visitedCountries = [
+  { name: 'Botswana', year: 2020 },
   { name: 'Botswana', year: 2021 },
   { name: 'Botswana', year: 2022 },
+  { name: 'Botswana', year: 2023 },
+  { name: 'Botswana', year: 2024 },
+  { name: 'Botswana', year: 2025 },
   { name: 'South Africa', year: 2022 }
 ];
 
