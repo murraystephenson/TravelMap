@@ -3,13 +3,12 @@
 // -----------------------------
 const map = L.map('map').setView([20, 0], 2);
 
-// OpenStreetMap base tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
 // -----------------------------
-// Get year filter dropdown
+// Year filter dropdown
 // -----------------------------
 const yearFilter = document.getElementById('yearFilter');
 
@@ -22,38 +21,40 @@ let countryLayers = [];
 // -----------------------------
 // Load towns and countries from Google Spreadsheet
 // -----------------------------
-async function loadData() {
-  const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRKUiBcIY-VXMjZ30sY48TAloeRBtSVCf0DZzSRmHivY9SndCmrXnC5XLpIOZQjeDmjKgZH7PH6MPVK/pub?gid=0&single=true&output=csv');
-  const csvText = await response.text();
-  const lines = csvText.split('\n');
-  const headers = lines[0].split(',');
+function loadData() {
+  return fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRKUiBcIY-VXMjZ30sY48TAloeRBtSVCf0DZzSRmHivY9SndCmrXnC5XLpIOZQjeDmjKgZH7PH6MPVK/pub?gid=0&single=true&output=csv')
+    .then(response => response.text())
+    .then(csvText => {
+      const lines = csvText.split('\n');
+      const headers = lines[0].split(',');
 
-  const towns = [];
-  const visitedCountries = [];
+      const towns = [];
+      const visitedCountries = [];
 
-  for (let i = 1; i < lines.length; i++) {
-    if (!lines[i].trim()) continue;
-    const row = lines[i].split(',');
+      for (let i = 1; i < lines.length; i++) {
+        if (!lines[i].trim()) continue;
+        const row = lines[i].split(',');
 
-    const town = {};
-    headers.forEach((h, idx) => {
-      town[h.trim()] = row[idx] ? row[idx].trim() : '';
-    });
+        const town = {};
+        headers.forEach((h, idx) => {
+          town[h.trim()] = row[idx] ? row[idx].trim() : '';
+        });
 
-    // Multiple years support
-    town.years = town.Years.split(',').map(y => y.trim());
+        // Handle multiple years
+        town.years = town.Years.split(',').map(y => y.trim());
 
-    towns.push(town);
+        towns.push(town);
 
-    // Populate visited countries dynamically
-    town.years.forEach(y => {
-      if (!visitedCountries.some(c => c.name === town.Country && c.year == y)) {
-        visitedCountries.push({ name: town.Country, year: parseInt(y) });
+        // Populate countries dynamically
+        town.years.forEach(y => {
+          if (!visitedCountries.some(c => c.name === town.Country && c.year == y)) {
+            visitedCountries.push({ name: town.Country, year: parseInt(y) });
+          }
+        });
       }
-    });
-  }
 
-  return { towns, visitedCountries };
+      return { towns, visitedCountries };
+    });
 }
 
 // -----------------------------
@@ -86,11 +87,10 @@ function addCountries(visitedCountries, geojsonData) {
       });
 
       return {
-        color: 'blue',
+        color: 'transparent',                 // no borders
         fillColor: isVisited ? 'lightblue' : 'transparent',
         fillOpacity: isVisited ? 0.4 : 0,
-        weight: 1,
-        fill: true
+        weight: 0.5
       };
     },
     onEachFeature: function(feature, layer) {
@@ -122,13 +122,12 @@ function populateYearFilter(towns, visitedCountries) {
 }
 
 // -----------------------------
-// Filter towns and countries by selected year
+// Year filter functionality
 // -----------------------------
 function addYearFilter() {
   yearFilter.addEventListener('change', () => {
     const selectedYear = yearFilter.value;
 
-    // Filter town markers
     townMarkers.forEach(marker => {
       if (selectedYear === 'all' || marker.years.includes(selectedYear)) {
         marker.addTo(map);
@@ -137,7 +136,6 @@ function addYearFilter() {
       }
     });
 
-    // Filter countries
     countryLayers.forEach(obj => {
       if (!obj.layer) return;
       if (selectedYear === 'all' || obj.year == selectedYear) {
@@ -152,19 +150,19 @@ function addYearFilter() {
 // -----------------------------
 // Initialize everything
 // -----------------------------
-async function initMap() {
-  const { towns, visitedCountries } = await loadData();
+function initMap() {
+  loadData().then(({ towns, visitedCountries }) => {
+    addTownMarkers(towns);
+    populateYearFilter(towns, visitedCountries);
+    addYearFilter();
 
-  addTownMarkers(towns);
-  populateYearFilter(towns, visitedCountries);
-  addYearFilter();
-
-  // Load GeoJSON for countries
-  fetch('data/world_countries.geo.json')
-    .then(res => res.json())
-    .then(geojson => addCountries(visitedCountries, geojson))
-    .catch(err => console.error("Error loading GeoJSON:", err));
+    // Load GeoJSON countries
+    fetch('data/world_countries.geo.json')
+      .then(res => res.json())
+      .then(geojson => addCountries(visitedCountries, geojson))
+      .catch(err => console.error("Error loading GeoJSON:", err));
+  });
 }
 
-// Call init
+// Call the initializer
 initMap();
