@@ -16,13 +16,15 @@ const yearFilter = document.getElementById('yearFilter');
 // Local data for towns
 // -----------------------------
 const towns = [
-  { City: 'Maun', Country: 'Botswana', Latitude: -19.983, Longitude: 23.431, Date: '2020-11-06', Years: ['2020', '2021', '2022', '2023', '2024, '2025'] },
+  { City: 'Maun', Country: 'Botswana', Latitude: -19.983, Longitude: 23.431, Date: '2021-06-15', Years: ['2021', '2022'] },
+  { City: 'Cape Town', Country: 'South Africa', Latitude: -33.918, Longitude: 18.423, Date: '2022-12-05', Years: ['2022'] }
 ];
 
 // Local data for countries visited (derived from towns)
 const visitedCountries = [
-  { name: 'Botswana', year: 2020 },
   { name: 'Botswana', year: 2021 },
+  { name: 'Botswana', year: 2022 },
+  { name: 'South Africa', year: 2022 }
 ];
 
 // -----------------------------
