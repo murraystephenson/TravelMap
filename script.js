@@ -78,6 +78,20 @@ const locations = [
     lat: -27.470,
     lng: 153.026,
     years: ['2015']
+  },
+  {
+    city: 'Colombo',
+    country: 'Sri Lanka',
+    lat: 6.927,
+    lng: 79.861,
+    years: ['2024']
+  },
+  {
+    city: 'Arugam Bay',
+    country: 'Sri Lanka',
+    lat: 6.840,
+    lng: 81.837,
+    years: ['2024']
   }
 ];
 
