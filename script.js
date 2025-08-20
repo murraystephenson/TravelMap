@@ -29,6 +29,13 @@ const locations = [
     lat: -19.983,
     lng: 23.431,
     years: Array.from({length: 2025 - 2020 + 1}, (_, i) => (2020 + i).toString())
+  },
+  {
+    city: 'Gaborone',
+    country: 'Botswana',
+    lat: -24.628,
+    lng: 25.923,
+    years: ['2023', '2024', '2025']
   }
 ];
 
