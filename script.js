@@ -17,7 +17,7 @@ const yearFilter = document.getElementById('yearFilter');
 // -----------------------------
 const towns = [
   { City: 'Maun', Country: 'Botswana', Latitude: -19.983, Longitude: 23.431, Date: '2020-11-06', Years: ['2020', '2021', '2022', '2023', '2024, '2025'] },
-  { City: 'Cape Town', Country: 'South Africa', Latitude: -33.918, Longitude: 18.423, Date: '2022-12-05', Years: ['1987 - 2025'] }
+  { City: 'Cape Town', Country: 'South Africa', Latitude: -33.918, Longitude: 18.423, Date: '2022-12-05', Years: ['1987'] }
   { City: 'London', Country: 'England', Latitude: -51.507, Longitude: 0.127, Date: '2017-07-26', Years: ['2017'] }
   { City: 'Boston', Country: 'United States of America', Latitude: -42.356, Longitude: 71.056, Date: '2017-07-18', Years: ['2017'] }
 ];
