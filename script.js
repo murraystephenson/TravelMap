@@ -18,14 +18,14 @@ towns.forEach(town => {
     .bindPopup(`📍 ${town.name} <br>📅 ${town.date}`);
 });
 
-// ----- Countries -----
-fetch('data/countries.json')
+// ----- Countries (from your custom.geo.json) -----
+fetch('data/custom.geo.json')
   .then(res => res.json())
-  .then(json => {
-    L.JSON(json, {
+  .then(geojson => {
+    L.geoJSON(geojson, {
       style: {
-        color: 'blue',
-        fillColor: 'lightblue',
+        color: 'blue',        // border color
+        fillColor: 'lightblue', // fill color
         fillOpacity: 0.4,
         weight: 1
       }
