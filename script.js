@@ -30,13 +30,16 @@ towns.forEach(town => {
 fetch('data/world_countries.geo.json')  // Make sure this path matches your file
   .then(res => res.json())
   .then(geojson => {
-    L.geoJSON(geojson, {
-      style: {
-        color: 'blue',         // Country borders
-        fillColor: 'lightblue', // Country fill color
-        fillOpacity: 0.4,
-        weight: 1
-      }
-    }).addTo(map);
+L.geoJSON(geojson, {
+  style: function(feature) {
+    return {
+      color: 'blue',         // border color
+      fillColor: 'lightblue', // fill color
+      fillOpacity: 0.4,       // transparency
+      weight: 1,
+      fill: true              // force Leaflet to fill the polygon
+    };
+  }
+}).addTo(map);
   })
   .catch(err => console.error("Error loading GeoJSON:", err));
