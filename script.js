@@ -23,8 +23,8 @@ const visitedCountries = [
 // Add town markers
 // -----------------------------
 const towns = [
-  { name: "Maun, Botswana", coords: [-19.983, 23.431], date: "2023-06-15" },
-  { name: "Cape Town, South Africa", coords: [-33.918, 18.423], date: "2022-12-05" }
+  { name: "Maun, Botswana", coords: [-19.983, 23.431], date: "2023-06-15", year: 2023 },
+  { name: "Cape Town, South Africa", coords: [-33.918, 18.423], date: "2022-12-05", year: 2022 }
 ];
 
 towns.forEach(town => {
