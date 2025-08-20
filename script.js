@@ -1,7 +1,7 @@
 // -----------------------------
 // Initialize the map
 // -----------------------------
-const map = L.map('map').setView([20, 0], 2);
+const map = L.map('map').setView([-33.918, 18.423], 4); // centered on Cape Town
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '© OpenStreetMap contributors'
@@ -13,62 +13,53 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const yearFilter = document.getElementById('yearFilter');
 
 // -----------------------------
-// Local data for towns
+// Combined data for towns and countries
 // -----------------------------
-const towns = [
-  { City: 'Maun', Country: 'Botswana', Latitude: -19.983, Longitude: 23.431, Date: '2021-06-15', Years: ['2021', '2022'] },
-  { City: 'Gaborone', Country: 'Botswana', Latitude: -24.628, Longitude: 25.923, Date: '2023-08-10', Years: ['2023'] },
-  { City: 'Cape Town', Country: 'South Africa', Latitude: -33.918, Longitude: 18.423, Date: '2022-12-05', Years: ['2022'] }
+const locations = [
+  {
+    city: 'Cape Town',
+    country: 'South Africa',
+    lat: -33.918,
+    lng: 18.423,
+    years: Array.from({length: 2025 - 1987 + 1}, (_, i) => (1987 + i).toString())
+  }
 ];
 
-// Local data for countries visited (Botswana 2020–2025)
-const visitedCountries = [
-  { name: 'Botswana', year: 2020 },
-  { name: 'Botswana', year: 2021 },
-  { name: 'Botswana', year: 2022 },
-  { name: 'Botswana', year: 2023 },
-  { name: 'Botswana', year: 2024 },
-  { name: 'Botswana', year: 2025 },
-  { name: 'South Africa', year: 2022 }
-];
-
-// -----------------------------
 // Store markers and country layers
-// -----------------------------
-let townMarkers = [];
+let markers = [];
 let countryLayers = [];
 
 // -----------------------------
-// Add town markers
+// Add markers
 // -----------------------------
-function addTownMarkers() {
-  townMarkers = towns.map(town => {
-    const marker = L.marker([town.Latitude, town.Longitude])
-      .bindPopup(`📍 ${town.City}, ${town.Country} <br>📅 ${town.Date}`);
-    marker.years = town.Years;
+function addMarkers() {
+  markers = locations.map(loc => {
+    const marker = L.marker([loc.lat, loc.lng])
+      .bindPopup(`📍 ${loc.city}, ${loc.country}`);
+    marker.years = loc.years;
     marker.addTo(map);
     return marker;
   });
 }
 
 // -----------------------------
-// Add countries from GeoJSON
+// Add country from GeoJSON
 // -----------------------------
 function addCountries(geojsonData) {
   L.geoJSON(geojsonData, {
     style: function(feature) {
       const countryName = feature.properties.name.trim();
-      const countryData = visitedCountries.find(c => c.name === countryName);
-      const isVisited = !!countryData;
+      const locData = locations.find(l => l.country === countryName);
+      const isVisited = !!locData;
 
       countryLayers.push({
         feature: feature,
         layer: null,
-        year: isVisited ? countryData.year : null
+        years: isVisited ? locData.years : []
       });
 
       return {
-        color: 'transparent',                 // remove borders
+        color: 'transparent',
         fillColor: isVisited ? 'lightblue' : 'transparent',
         fillOpacity: isVisited ? 0.4 : 0,
         weight: 0.5
@@ -76,8 +67,8 @@ function addCountries(geojsonData) {
     },
     onEachFeature: function(feature, layer) {
       const countryName = feature.properties.name.trim();
-      const countryData = visitedCountries.find(c => c.name === countryName);
-      if (countryData) layer.addTo(map);
+      const locData = locations.find(l => l.country === countryName);
+      if (locData) layer.addTo(map);
 
       const layerObj = countryLayers.find(l => l.feature === feature);
       if (layerObj) layerObj.layer = layer;
@@ -89,10 +80,9 @@ function addCountries(geojsonData) {
 // Populate year filter dropdown
 // -----------------------------
 function populateYearFilter() {
-  const allYears = Array.from(new Set([
-    ...towns.flatMap(t => t.Years),
-    ...visitedCountries.map(c => c.year.toString())
-  ])).sort();
+  const allYears = Array.from(new Set(
+    locations.flatMap(l => l.years)
+  )).sort();
 
   allYears.forEach(y => {
     const option = document.createElement('option');
@@ -109,7 +99,7 @@ function addYearFilter() {
   yearFilter.addEventListener('change', () => {
     const selectedYear = yearFilter.value;
 
-    townMarkers.forEach(marker => {
+    markers.forEach(marker => {
       if (selectedYear === 'all' || marker.years.includes(selectedYear)) {
         marker.addTo(map);
       } else {
@@ -119,7 +109,7 @@ function addYearFilter() {
 
     countryLayers.forEach(obj => {
       if (!obj.layer) return;
-      if (selectedYear === 'all' || obj.year == selectedYear) {
+      if (selectedYear === 'all' || obj.years.includes(selectedYear)) {
         obj.layer.addTo(map);
       } else {
         map.removeLayer(obj.layer);
@@ -132,11 +122,10 @@ function addYearFilter() {
 // Initialize everything
 // -----------------------------
 function initMap() {
-  addTownMarkers();
+  addMarkers();
   populateYearFilter();
   addYearFilter();
 
-  // Load GeoJSON countries
   fetch('data/world_countries.geo.json')
     .then(res => res.json())
     .then(geojson => addCountries(geojson))
