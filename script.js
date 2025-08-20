@@ -51,7 +51,7 @@ fetch('data/world_countries.geo.json')  // Make sure this path matches your file
     const isVisited = visitedCountries.some(c => c.toLowerCase().trim() === countryName);
 
     return {
-          color: 'blue',                      // Country borders
+          color: 'transparent',                      // Country borders
           fillColor: isVisited ? 'lightblue' : 'transparent', // Fill only visited countries
           fillOpacity: isVisited ? 0.4 : 0,
           weight: 1,
