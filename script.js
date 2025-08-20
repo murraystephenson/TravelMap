@@ -105,7 +105,7 @@ let countryLayers = [];
 function addMarkers() {
   markers = locations.map(loc => {
     const marker = L.marker([loc.lat, loc.lng])
-      .bindPopup(`📍 ${loc.city}, ${loc.country}, ${yearsText}`);
+      .bindPopup(`📍 ${loc.city}, ${loc.country}, ${loc.years}`);
     marker.years = loc.years;
     marker.addTo(map);
     return marker;
