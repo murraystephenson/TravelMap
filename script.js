@@ -101,6 +101,13 @@ const locations = [
     years: ['2018']
   },
   {
+    city: 'Varenna',
+    country: 'Italy',
+    lat: 46.010,
+    lng: 9.283,
+    years: ['2018']
+  },
+  {
     city: 'Portland',
     country: 'United States of America',
     lat: 45.515,
