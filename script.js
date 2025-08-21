@@ -169,6 +169,13 @@ const locations = [
     lat: -23.893,
     lng: 16.005,
     years: ['2025']
+  },
+  {
+    city: 'Victoria',
+    country: 'Seychelles',
+    lat: -4.621,
+    lng: 55.452,
+    years: ['2018']
   }
 ];
 
