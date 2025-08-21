@@ -134,6 +134,13 @@ const locations = [
     lat: 33.873,
     lng: -115.901,
     years: ['2013']
+  },
+  {
+    city: 'Breckenridge',
+    country: 'United States of America',
+    lat: 39.482,
+    lng: -106.038,
+    years: ['2007']
   }
 ];
 
