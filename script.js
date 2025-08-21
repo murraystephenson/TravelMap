@@ -232,13 +232,6 @@ const locations = [
     lat: -18.8556,
     lng: 16.3293,
     years: ['1999']
-  },
-  {
-    city: 'Maun',
-    country: 'Botswana',
-    lat: -19.983,
-    lng: 23.431,
-    years: ['2000']
   }
 ];
 
