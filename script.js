@@ -187,23 +187,30 @@ const locations = [
   {
     city: 'Bangkok',
     country: 'Thailand',
-    lat: -13.756,
+    lat: 13.756,
     lng: 100.502,
     years: ['2011']
   },
   {
     city: 'Vang Vieng',
     country: 'Laos',
-    lat: -18.950,
+    lat: 18.950,
     lng: 102.443,
     years: ['2011']
   },
   {
     city: 'Hong Kong',
     country: 'China',
-    lat: -22.319,
+    lat: 22.319,
     lng: 114.169,
     years: ['1998']
+  },
+  {
+    city: 'Barcelona',
+    country: 'Spain',
+    lat: 41.387,
+    lng: 2.168,
+    years: ['2019']
   }
 ];
 
