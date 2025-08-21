@@ -92,6 +92,48 @@ const locations = [
     lat: 6.840,
     lng: 81.837,
     years: ['2024']
+  },
+  {
+    city: 'Zug',
+    country: 'Switzerland',
+    lat: 47.166,
+    lng: 8.515,
+    years: ['2018']
+  },
+  {
+    city: 'Portland',
+    country: 'United States of America',
+    lat: 45.515,
+    lng: -122.678,
+    years: ['2016']
+  },
+  {
+    city: 'Juneau',
+    country: 'United States of America',
+    lat: 58.300,
+    lng: -134.420,
+    years: ['2016']
+  },
+  {
+    city: 'New York',
+    country: 'United States of America',
+    lat: 40.712,
+    lng: -74.006,
+    years: ['2016', '2013']
+  },
+  {
+    city: 'Los Angeles',
+    country: 'United States of America',
+    lat: 34.055,
+    lng: -118.242,
+    years: ['2013']
+  },
+  {
+    city: 'Joshua Tree',
+    country: 'United States of America',
+    lat: 33.873,
+    lng: -115.901,
+    years: ['2013']
   }
 ];
 
