@@ -141,6 +141,34 @@ const locations = [
     lat: 39.482,
     lng: -106.038,
     years: ['2007']
+  },
+  {
+    city: 'Victoria Falls',
+    country: 'Zimbabwe',
+    lat: -17.931,
+    lng: 25.830,
+    years: ['2022', '2023', '2024']
+  },
+  {
+    city: 'Swakopmund',
+    country: 'Namibia',
+    lat: -22.675,
+    lng: 14.525,
+    years: ['2025']
+  },
+  {
+    city: 'Windhoek',
+    country: 'Namibia',
+    lat: -22.565,
+    lng: 17.084,
+    years: ['2025']
+  },
+  {
+    city: 'Solitaire',
+    country: 'Namibia',
+    lat: -23.893,
+    lng: 16.005,
+    years: ['2025']
   }
 ];
 
