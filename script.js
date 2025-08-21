@@ -222,14 +222,14 @@ const locations = [
   {
     city: 'Johannesburg',
     country: 'South Africa',
-    lat: 26.2056,
+    lat: -26.2056,
     lng: 28.0337,
     years: ['2014', '2015']
   },
   {
     city: 'Etosha',
     country: 'Namibia',
-    lat: 18.8556,
+    lat: -18.8556,
     lng: 16.3293,
     years: ['1999']
   },
