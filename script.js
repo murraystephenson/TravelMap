@@ -211,6 +211,13 @@ const locations = [
     lat: 41.387,
     lng: 2.168,
     years: ['2019']
+  },
+  {
+    city: 'Pais',
+    country: 'France',
+    lat: 48.8575,
+    lng: 2.3514,
+    years: ['2019']
   }
 ];
 
