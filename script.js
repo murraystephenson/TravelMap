@@ -218,6 +218,27 @@ const locations = [
     lat: 48.8575,
     lng: 2.3514,
     years: ['2019']
+  },
+  {
+    city: 'Johannesburg',
+    country: 'South Africa',
+    lat: 26.2056,
+    lng: 28.0337,
+    years: ['2014', '2015']
+  },
+  {
+    city: 'Etosha',
+    country: 'Namibia',
+    lat: 18.8556,
+    lng: 16.3293,
+    years: ['1999']
+  },
+  {
+    city: 'Maun',
+    country: 'Botswana',
+    lat: -19.983,
+    lng: 23.431,
+    years: ['2000']
   }
 ];
 
