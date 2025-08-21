@@ -28,7 +28,7 @@ const locations = [
     country: 'Botswana',
     lat: -19.983,
     lng: 23.431,
-    years: Array.from({length: 2025 - 2020 + 1}, (_, i) => (2020 + i).toString())
+    years: ['2000', ...Array.from({length: 2025 - 2020 + 1}, (_, i) => (2020 + i).toString())]
   },
   {
     city: 'Gaborone',
